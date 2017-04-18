@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block scripts %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js"></script>
+<script>
+refresh();
+function refresh(){	
+	$.post("/hospital_content.html",{show:"1"}).done(function(data) {
+		$('#hospital_content').html(data);
+		});
+	setTimeout("refresh()",3000);}
+</script>
+<script>
+userInfo();
+function userInfo(){	
+	$.post("/user_info.html",{show:"1"}).done(function(data) {
+		$('#user_info').html(data);
+		});
+	setTimeout("userInfo()",3000);}
+</script>
+<script>
+function delItem(del_item){	
+	$.post("/game/silence.html",{del_item:del_item}).done(function(data) {
+		userInfo();
+		});
+}
+</script>
+{% endblock %}
+{% block body %}
+{% include 'shelf.html' %}
+<div id='hospital_content' class='hospital_content'>refresh</div>
+<div class='user_info' id='user_info'></div>
+{% endblock %}

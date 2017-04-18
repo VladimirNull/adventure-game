@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block scripts %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js"></script>
+<script>
+refresh();
+function refresh(){	
+	$.post("/hideout_content.html",{show:"1"}).done(function(data) {
+		$('#hideout_content').html(data);
+		});
+	setTimeout("refresh()",3000);}
+</script>
+<script>
+function unload_bag_to_chest(){	
+	$.post("/hideout_content.html",{unload_bag_to_chest:"1"}).done(function(data) {
+		});
+}
+</script>
+<script>
+function to_chest(item){
+	$.post("/hideout_content.html",{to_chest:item}).done(function(data) {
+		});
+}
+</script>
+<script>
+function to_bag(item){
+	$.post("/hideout_content.html",{to_bag:item}).done(function(data) {
+		});
+}
+</script>
+<script>
+userInfoHideout();
+function userInfoHideout(){	
+	$.post("/user_info_hideout.html",{show:"1"}).done(function(data) {
+		$('#user_info_hideout').html(data);
+		});
+	setTimeout("userInfoHideout()",3000);}
+</script>
+{% endblock %}
+{% block body %}
+{% include 'shelf.html' %}
+<div id='hideout_content' class='hideout_content'></div>
+<div class='user_info-hideout' id='user_info_hideout'></div>
+{% endblock %}

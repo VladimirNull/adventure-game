@@ -1,0 +1,10 @@
+<div class='no_hospital'>{% if because == 1 %}
+<div class='no_hospital-message'>{{ view['name'] }} в убежище</div>
+{% endif %}
+{% if because == 3 %}
+<div class='no_hospital-message'>{{ view['name'] }}  на улицах</div>
+{% endif %}
+{% if because == 4 %}
+<div class='no_hospital-message'>{{ view['name'] }}  в тюрьме</div>
+{% endif %}
+</div>

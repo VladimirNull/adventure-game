@@ -1,0 +1,17 @@
+{% for view in views %}
+	<div class='info_board_on_main'>
+		id: {{ view[0] }}
+		<a href=/game/{{ view[0] }}>открыть</a>
+		{% for player in view[1] %}
+			{{ player.name }}
+		{% endfor %}
+		size:{{ view[2][0] }}x{{ view[2][1] }}
+		{% if join == True %}
+			<form action="{{ url_for('game_screen',id_board = view[0]) }}" method=post>
+			<input type=hidden name=join value=1>
+			<input type=submit value=join>
+			</form>	
+		{% endif %}
+	</div>
+
+{% endfor %}

@@ -1,0 +1,10 @@
+<div class='user_info-name'>{{view['name']}}</div>
+<div class='user_info-health'>{{view['health']}} / {{view['max_health']}}</div>
+<div class='user_info-attack'>{{view['hit']}}</div>
+<div class='user_info-defence'>{{view['defence']}}</div>
+<div class='user_info-bag_weight'>{{view['tote']}} / {{view['carrying']}}</div>
+<div class='user_info-bag'>
+{% for item in view['bag'] %}
+<div class='user_info-bag-item'>{{ item[0] }}<div class='item-to_trash' onClick="delItem('{{ item[0] }}');"></div></div>
+{% endfor %}
+</div>

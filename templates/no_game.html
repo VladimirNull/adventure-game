@@ -1,0 +1,19 @@
+{{ view['name'] }}
+bag {{ view['bag'] }}
+max_health {{ view['max_health'] }}
+health {{ view['health'] }}
+hit {{ view['hit'] }}
+defence {{ view['defence'] }}
+score {{ view['score'] }}
+exp {{ view['exp'] }}
+place {{ view['place'] }}
+prison {{ view['prison'] }}
+{% if because == 2 %}
+вам сюда нельзя, потому что Вы еще в больнице
+{% endif %}
+{% if because == 4 %}
+вам сюда нельзя, потому что Вы еще в тюрьме
+{% endif %}
+{% if because == 1 %}
+Ваш персонаж засел в убежище
+{% endif %}

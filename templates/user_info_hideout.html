@@ -1,0 +1,14 @@
+<div class='user_info-name'>{{view['name']}}</div>
+<div class='user_info-health'>{{view['health']}} / {{view['max_health']}}</div>
+<div class='user_info-attack'>{{view['hit']}}</div>
+<div class='user_info-defence'>{{view['defence']}}</div>
+<div class='user_info-bag_weight'>{{view['tote']}} / {{view['carrying']}}</div>
+<div class='unload_to_chest' onClick="unload_bag_to_chest();"></div><div class='user_info-bag'>
+{% for item in view['bag'] %}
+<div class='user_info-bag-item'>{{ item[0] }}
+<div onClick="delItem('{{ item[0] }}');" class='item-to_trash' title='выбросить'></div>
+<div onClick="to_chest('{{ item[0] }}');" class='item-to_chest'></div>
+<div onClick="to_bag('{{ item[0] }}');" class='item-sell' title='продать'></div>
+</div>
+{% endfor %}
+</div>

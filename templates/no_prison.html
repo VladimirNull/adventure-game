@@ -1,0 +1,11 @@
+<div class='no_prison'>
+{% if because == 1 %}
+<div class='no_prison-message'>{{ view['name'] }} чист перед законом и аккуратно засел в убежище</div>
+{% endif %}
+{% if because == 2 %}
+<div class='no_prison-message'>{{ view['name'] }} в больнице, но если был задержан, обязательно будет сопровождён сюда</div>
+{% endif %}
+{% if because == 3 %}
+<div class='no_prison-message'>{{ view['name'] }} на улицах</div>
+{% endif %}
+</div>

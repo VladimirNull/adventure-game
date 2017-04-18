@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block body %}
+{% include 'shelf.html' %}
+{% if because == 2 %}
+вам сюда нельзя, потому что Вы еще в больнице
+{% endif %}
+{% if because == 4 %}
+вам сюда нельзя, потому что Вы еще в тюрьме
+{% endif %}
+{% endblock %}

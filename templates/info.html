@@ -1,0 +1,83 @@
+<div class='board_info'>
+{% if mode == "1" %}
+    <div class='who_move' id='who_move' >
+       {% if waiting_drop == "1"%}
+       <div class='drop_dice' onClick="dropDice();" >
+		   БРОСАЙ!!! {{ info_board[3] }}
+		   </div>
+       {% endif %}   
+       {% if waiting_drop == "0" %}
+       <div class='show_dice'>{{ info_board[2] }}</div>
+       {% endif %}    
+       {% if waiting_drop == "2" and info_board[1]|string!="None" %}
+       <div class='show_move'>ходит {{ info_board[1] }}</div>
+       {% endif %}    
+    </div>
+    <div class='minimap'>
+    {{ show_minimap|safe }}
+    <div class='help_minimap'>
+    <div class='upper_static_scree-text_left-width'>    
+    <div class='minimap_hero_self'></div>  Вы 
+    </div>
+    <div class='upper_static_scree-text_left-width'> 
+        <div class='minimap_5'></div>  река
+    </div>
+    <div class='upper_static_scree-text_left-width'> 
+        <div class='minimap_4'></div>  высотка
+    </div>
+    <div class='upper_static_scree-text_left-width'> 
+        <div class='minimap_3'></div>  коттедж
+    </div>
+    <div class='upper_static_scree-text_left-width'> 
+        <div class='minimap_2'></div>  парк
+    </div>
+    <div class='upper_static_scree-text_left-width'> 
+        <div class='minimap_1'></div>  пустырь
+    </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% if mode == "2" %}
+	кооперативный режим<br/><br/>
+	{% if welcome[0]==True %}
+		<form action="{{ url_for('game_screen',id_board = welcome[1]) }}" method=post>
+		<input type=hidden name=join value=1>
+		<input type=submit value=join>
+		</form>
+	{% else %}
+		<form action="{{ url_for('game_screen',id_board = welcome[1]) }}" method=post>
+		<input type=hidden name=escape value=1>
+		<input type=submit value=escape>
+		</form>	
+	{% endif %}
+	игроки:<br/>
+	{% for player in view[0] %}
+		{% if view[3] == player.name %}
+			{{ player.name }} HP:{{ player.health}}<img src='/static/dice.gif' height = 10px><br/>
+		{% else %}
+			{{ player.name }} HP:{{ player.health}}<br/>
+		{% endif %}
+	{% endfor %}
+	{% if view[1] %}
+	winners:<br/>
+	{% for winner in view[1] %}
+		{{ winner.name }}<br/>
+	{% endfor %}
+	{% endif %}
+	{% if view[2] %}
+	losers:<br/>
+	{% for loser in view[2] %}
+		{{ loser.name }}<br/>
+	{% endfor %}
+	{% endif %} <br/><br/>
+	ход {{ view[3] }}<br/>
+	осталось: {{ view[4] }}<br/>
+	<div class='minimap'>
+	minimap {{ view[5]|safe }}
+     
+	</div>
+
+{% endif %}
+</div>

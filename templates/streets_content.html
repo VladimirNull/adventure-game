@@ -1,0 +1,43 @@
+<div class='streets'>
+<div class='streets-new_games'>
+<form action="{{ url_for('game_main') }}" method=post>
+<input type=hidden name=type_game value=1>
+<input type=submit value='одиночная игра' class='streets-start_single'>
+</form>
+<form action="{{ url_for('game_main') }}" method=post >
+<input type=hidden name=type_game value=2>
+<input type=submit value='совместная игра' class='streets-start_coop'>
+</form>
+</div>
+<div class='streets-open_games'>
+{% for board in view_boards %}
+{% if board[3] == "0" %}
+	<div class='streets-open_game'>
+	<div class='streets-id_board'>{{ board[0] }} {{ board[3] }}</div>
+		{% if board[1] == "1" %}
+		<form action="{{ url_for('game_screen',id_board = board[0]) }}" method=post>
+		<input type=hidden name=join value=1>
+		<input type=submit value=играть class='streets-play_butt'>
+		</form>
+		<div class='streets-player_name'>{{ player.name }}</div>
+		{% endif %}
+	</div>
+	{% endif %}
+{% endfor %}
+</div>
+<div class='streets-close_games'>
+{% for board in view_boards %}
+{% if board[3] == "1" %}
+	<div class='streets-close_game'>
+	<div class='streets-id_board'>{{ board[0] }} {{ board[3] }}</div>
+		{% if player in board[1] %}
+		<form action="{{ url_for('game_screen',id_board = board[0]) }}" method=post>
+		<input type=hidden name=join value=1>
+		<input type=submit value=посмотеть class='streets-play_butt'>
+		</form>
+		<div class='streets-player_name'>{{ player.name }}</div>
+		{% endif %}
+	</div>
+	{% endif %}
+{% endfor %}
+</div>

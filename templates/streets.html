@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block scripts %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.js"></script>
+<script>
+refresh();
+function refresh(){	
+	$.post("/streets_content.html",{show:"1"}).done(function(data) {
+		$('#streets_content').html(data);
+		});
+	setTimeout("refresh()",3000);}
+</script>
+<script>
+userInfo();
+function userInfo(){	
+	$.post("/user_info.html",{show:"1"}).done(function(data) {
+		$('#user_info').html(data);
+		});
+	setTimeout("userInfo()",3000);}
+</script>
+{% endblock %}
+{% block body %}
+{% include 'shelf.html' %}
+<div id='streets_content' class='streets_content'></div>
+<div class='user_info' id='user_info'></div>
+{% endblock %}

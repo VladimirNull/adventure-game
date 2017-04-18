@@ -1,0 +1,23 @@
+{% block scripts %}
+<script>
+userInfo();
+function userInfo(){	
+	$.post("/user_info.html",{show:"1"}).done(function(data) {
+		$('#user_info').html(data);
+		});
+	setTimeout("userInfo()",3000);}
+</script>
+{% endblock %}
+
+<div class='no_hideout'>
+{% if because == 2 %}
+<div class='no_hideout-message'>вам сюда нельзя, потому что Вы еще в больнице</div>
+{% endif %}
+{% if because == 4 %}
+<div class='no_hideout-message'>Персонаж в тюрьме</div>
+{% endif %}
+{% if because == 3 %}
+<div class='no_hideout-message'>Ваш персонаж на улицах</div>
+{% endif %}
+</div>
+<div class='user_info' id='user_info'></div>

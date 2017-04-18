@@ -1,0 +1,12 @@
+<div class='no_streets'>
+prison {{ view['prison'] }}
+{% if because == 2 %}
+вам сюда нельзя, потому что Вы еще в больнице
+{% endif %}
+{% if because == 4 %}
+вам сюда нельзя, потому что Вы еще в тюрьме
+{% endif %}
+{% if because == 1 %}
+Ваш персонаж в убежище
+{% endif %}
+</div>

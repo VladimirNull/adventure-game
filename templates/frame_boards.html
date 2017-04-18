@@ -1,0 +1,12 @@
+{% if tv_screen[0]!=[]%}
+	{% for board in tv_screen[0] %}
+		<a href={{ url_for('game',id_board = board[0] ) }}>
+			{{ board[0] }},
+			{% if board[1]!=[] %}
+				{% for player in board[1] %}
+					{{ player.name }}
+				{% endfor %}
+			{% endif %}
+			</a>			
+	{% endfor %}
+{% endif %}

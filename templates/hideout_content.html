@@ -1,0 +1,12 @@
+<div class='hideout-chest'>
+{% for item in view['chest'] %}
+	<div class='item'>
+	<div class='item_pic'>{{ item[0] }}<br/> wgh: {{ item[1] }}</div>
+	<div onClick="delItem('{{ item[0] }}');" class='item-to_trash' title='выбросить'></div>
+	<div onClick="to_bag('{{ item[0] }}');" class='item-to_bag' title='снарядить в мешок'></div>
+	<div onClick="to_bag('{{ item[0] }}');" class='item-sell' title='продать'></div>
+	
+	</div>
+{% endfor %}
+</div>
+
